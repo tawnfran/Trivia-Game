@@ -6,235 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title> Game</title>
+    <title> Trivia-Random </title>
 </head>
 
 <body>
-    <h2>Tawnys Trivia Game</h2>
-    <div id="timer"></div>
-    <div class="container">
-        <div class="questionContainer">
-            <div class="questionTitle"></div>
-            <button class="answerOne"></button>
-            <button class="answerTwo"></button>
-            <button class="answerThree"></button>
-            <button class="answerFour"></button>
+    <div id="background">
+        <input type="radio" name="start-button" value=button>
+        
+
+        <h2>Tawnys Trivia Game</h2>
+        <div id="timer"></div>
+        <p>
+            <h3> Instructions: </h3>
+        </p>
+        <p> Answer the 10 trivia questions, you have 60 seconds!</p>
+        <div class="timer">
+            <p>Time Remaining: </p>
         </div>
+
+
+        <div class="container">
+
+        </div>
+
+
     </div>
+    <form>
+            <button id="submitQuiz">Submit</button>
+    </form>
+    <div id="resultsDiv">
+        <!-- empty for now, will append results at the end -->
+    </div>
+    <script src="assets/javascript/app.js"></script>
 
-    <script type="text/javascript">
-
-
-        //fontend
-        //build 10 of these, 8 more 34-41 is 1 question
-        var questions = [
-            { //q1
-                q: "How many days are in one year?",
-                a1: "367",
-                a2: "435",
-                a3: "356",
-                a4: "365",
-                correct: "365"
-            },
-
-            { //2
-                q: "What is the most populus state in the U.S.?",
-                a1: "Florida",
-                a2: "New Jersey",
-                a3: "California",
-                a4: "New York",
-                correct: "California"
-            },
-
-            { //3
-                q: "Who was the first American to go into space?",
-                a1: "Lance Armstrong",
-                a2: "Alan Shepard",
-                a3: "Jerry Springer",
-                a4: "George Washington",
-                correct: "Alan Shepard"
-            },
-
-            { //4
-                q: "What is the largest bone in the body?",
-                a1: "Femur",
-                a2: "Spine",
-                a3: "Arms",
-                a4: "Skull",
-                correct: "Femur"
-            },
-
-            { //5
-                q: "The average human body contains how many pints of blood?",
-                a1: "11",
-                a2: "17",
-                a3: "5",
-                a4: "9",
-                correct: "9"
-            },
-
-            { //6
-                q: "Which planet is closet to the Sun?",
-                a1: "Pluto",
-                a2: "Mercury",
-                a3: "Venus",
-                a4: "Mars",
-                correct: "Mercury"
-            },
-
-            { //7
-                q: "Spinach is high in what mineral?",
-                a1: "Iron",
-                a2: "Calcium",
-                a3: "Flouride",
-                a4: "Sodium",
-                correct: "Iron"
-            },
-
-            { //8
-                q: "What is the capital of Spain?",
-                a1: "Valencia",
-                a2: "Madrid",
-                a3: "Barcelona",
-                a4: "London",
-                correct: "Madrid"
-            },
-
-            { //9
-                q: "What is the third zodiac sign?",
-                a1: "Gemini",
-                a2: "Aquarius",
-                a3: "Virgo",
-                a4: "Libra",
-                correct: "Gemini"
-            },
-
-            { //10
-                q: "What is the total number of dots on a pair of dice?",
-                a1: "36",
-                a2: "49",
-                a3: "28",
-                a4: "42",
-                correct: "42"
-            },
-    
-        ]
-
-        var questionIndex = 1;
-        // questions[questionIndex].q
-
-
-        //4 of these, 
-        function renderQuestions() {
-            for (var i = 0; i < questions.length; i++) {
-                var questionContainer = $("<div>")
-                questionContainer.addClass("questionContainer")
-                var questionTitle = $("<div>")
-                questionTitle.addClass("questionTitle")
-                questionTitle.text(questions[i].q);
-                questionContainer.append(questionTitle)
-
-                //question 1 
-                var answerOne = $("<input>")
-                answerOne.attr("type", "radio")
-                answerOne.attr("name", "question" + i)
-                answerOne.val(questions[i].a1)
-                questionContainer.append(answerOne)
-                var answerOneText = $("<span>")
-                answerOneText.text(questions[i].a1)
-                questionContainer.append(answerOneText)
-
-                //question 2
-                var answerTwo = $("<input>")
-                answerTwo.attr("type", "radio")
-                answerTwo.attr("name", "question" + i)
-                answerTwo.val(questions[i].a2)
-                questionContainer.append(answerTwo)
-                var answerTwoText = $("<span>")
-                answerTwoText.text(questions[i].a2)
-                questionContainer.append(answerTwoText)
-
-                //question 3
-                var answerThree = $("<input>")
-                answerThree.attr("type", "radio")
-                answerThree.attr("name", "question" + i)
-                answerThree.val(questions[i].a3)
-                questionContainer.append(answerThree)
-                var answerThreeText = $("<span>")
-                answerThreeText.text(questions[i].a3)
-                questionContainer.append(answerThreeText)
-
-                //question 4
-                var answerFour = $("<input>")
-                answerFour.attr("type", "radio")
-                answerFour.attr("name", "question" + i)
-                answerFour.val(questions[i].a4)
-                questionContainer.append(answerFour)
-                var answerFourText = $("<span>")
-                answerFourText.text(questions[i].a4)
-                questionContainer.append(answerFourText)
-
-                $(".container").append(questionContainer)
-
-            }
-        }
-        renderQuestions()
-
-
-
-//div class=container
-    //div id=title
-    //div timer
-    //div question
-    //div choices
-    //div answer
-    //div results
-    //div startbtn
-
-// backend
-// var questionIndex=0;
-// var score=0;
-// //you start with a start btn and then it starts the game
-// function start (this will start the game)
-//     //hide the startbtn and then call renderquestion() fx part (question gamehtml)
-
-// // Function to render questions.
-// function renderQuestion() {
-//         // If there are still more questions, render the next one.(questions game fx)
-//         if (questionIndex <= (questionsArray.length - 1)) {
-//           document.querySelector("#question").innerHTML = questionsArray[questionIndex][0];
-//         }
-//         // If there aren't, render the end game screen.
-//         else {
-//           document.querySelector("#question").innerHTML = "Game Over!";
-//           document.querySelector("#score").innerHTML = "Final Score: " + score + " out of " + questionsArray.length;
-//         }
-//       }
-
-
-
-// //function renderQuestion
-//     //when you dynamically add the choices, use the fridge code
-
-
-
-//     //use the onclick event for the btn from the fridge game//you will need to grab the data-letter or data-user = choice and compare to answer
-//     //if userinput == answer
-//     //wins++
-//     //renderScore();
-//     if userinput!= answer
-//     //lose++;
-
-//    if we are at the end of the game
-//    //display final score 
-
-//         once we are done updated the the next index
-//     questionIndex++;
-//     //then call go to the next card
-//     renderQuestion();
 
     </script>
-
 </body>
 
 </html>
